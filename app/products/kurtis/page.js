@@ -13,7 +13,7 @@ const Kurtis = () => {
             <div className="mt-4 text-center md:text-left">
               <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">Kurtis</h3>
               <h2 className="text-gray-900 title-font text-lg font-medium">Redlily</h2>
-              <p className="mt-1">₹599</p>
+              <p className="mt-1">₹599</p><p className="mt-1">S, M, L, XL, XXL</p>
             </div>
           </div>
           <div className="lg:w-1/5 md:w-1/2 p-4 w-full shadow-lg m-2">
@@ -23,7 +23,7 @@ const Kurtis = () => {
             <div className="mt-4 text-center md:text-left">
               <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">Kurtis</h3>
               <h2 className="text-gray-900 title-font text-lg font-medium">Redlily</h2>
-              <p className="mt-1">₹599</p>
+              <p className="mt-1">₹599</p><p className="mt-1">S, M, L, XL, XXL</p>
             </div>
           </div>
           <div className="lg:w-1/5 md:w-1/2 p-4 w-full shadow-lg m-2">
@@ -33,7 +33,7 @@ const Kurtis = () => {
             <div className="mt-4 text-center md:text-left">
               <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">Kurtis</h3>
               <h2 className="text-gray-900 title-font text-lg font-medium">Redlily</h2>
-              <p className="mt-1">₹599</p>
+              <p className="mt-1">₹599</p><p className="mt-1">S, M, L, XL, XXL</p>
             </div>
           </div>
           <div className="lg:w-1/5 md:w-1/2 p-4 w-full shadow-lg m-2">
@@ -43,7 +43,7 @@ const Kurtis = () => {
             <div className="mt-4 text-center md:text-left">
               <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">Kurtis</h3>
               <h2 className="text-gray-900 title-font text-lg font-medium">Redlily</h2>
-              <p className="mt-1">₹599</p>
+              <p className="mt-1">₹599</p><p className="mt-1">S, M, L, XL, XXL</p>
             </div>
           </div>
           <div className="lg:w-1/5 md:w-1/2 p-4 w-full shadow-lg m-2">
@@ -53,7 +53,7 @@ const Kurtis = () => {
             <div className="mt-4 text-center md:text-left">
               <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">Kurtis</h3>
               <h2 className="text-gray-900 title-font text-lg font-medium">Redlily</h2>
-              <p className="mt-1">₹599</p>
+              <p className="mt-1">₹599</p><p className="mt-1">S, M, L, XL, XXL</p>
             </div>
           </div>
           <div className="lg:w-1/5 md:w-1/2 p-4 w-full shadow-lg m-2">
@@ -63,7 +63,7 @@ const Kurtis = () => {
             <div className="mt-4 text-center md:text-left">
               <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">Kurtis</h3>
               <h2 className="text-gray-900 title-font text-lg font-medium">Redlily</h2>
-              <p className="mt-1">₹599</p>
+              <p className="mt-1">₹599</p><p className="mt-1">S, M, L, XL, XXL</p>
             </div>
           </div>
           <div className="lg:w-1/5 md:w-1/2 p-4 w-full shadow-lg m-2">
@@ -73,7 +73,7 @@ const Kurtis = () => {
             <div className="mt-4 text-center md:text-left">
               <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">Kurtis</h3>
               <h2 className="text-gray-900 title-font text-lg font-medium">Redlily</h2>
-              <p className="mt-1">₹599</p>
+              <p className="mt-1">₹599</p><p className="mt-1">S, M, L, XL, XXL</p>
             </div>
           </div>
           <div className="lg:w-1/5 md:w-1/2 p-4 w-full shadow-lg m-2">
@@ -83,7 +83,7 @@ const Kurtis = () => {
             <div className="mt-4 text-center md:text-left">
               <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">Kurtis</h3>
               <h2 className="text-gray-900 title-font text-lg font-medium">Redlily</h2>
-              <p className="mt-1">₹599</p>
+              <p className="mt-1">₹599</p><p className="mt-1">S, M, L, XL, XXL</p>
             </div>
           </div>
           <div className="lg:w-1/5 md:w-1/2 p-4 w-full shadow-lg m-2">
@@ -93,7 +93,7 @@ const Kurtis = () => {
             <div className="mt-4 text-center md:text-left">
               <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">Kurtis</h3>
               <h2 className="text-gray-900 title-font text-lg font-medium">Redlily</h2>
-              <p className="mt-1">₹599</p>
+              <p className="mt-1">₹599</p><p className="mt-1">S, M, L, XL, XXL</p>
             </div>
           </div>
           <div className="lg:w-1/5 md:w-1/2 p-4 w-full shadow-lg m-2">
@@ -103,7 +103,7 @@ const Kurtis = () => {
             <div className="mt-4 text-center md:text-left">
               <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">Kurtis</h3>
               <h2 className="text-gray-900 title-font text-lg font-medium">Redlily</h2>
-              <p className="mt-1">₹599</p>
+              <p className="mt-1">₹599</p><p className="mt-1">S, M, L, XL, XXL</p>
             </div>
           </div>
           <div className="lg:w-1/5 md:w-1/2 p-4 w-full shadow-lg m-2">
@@ -113,7 +113,7 @@ const Kurtis = () => {
             <div className="mt-4 text-center md:text-left">
               <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">Kurtis</h3>
               <h2 className="text-gray-900 title-font text-lg font-medium">Redlily</h2>
-              <p className="mt-1">₹599</p>
+              <p className="mt-1">₹599</p><p className="mt-1">S, M, L, XL, XXL</p>
             </div>
           </div>
           <div className="lg:w-1/5 md:w-1/2 p-4 w-full shadow-lg m-2">
@@ -123,7 +123,7 @@ const Kurtis = () => {
             <div className="mt-4 text-center md:text-left">
               <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">Kurtis</h3>
               <h2 className="text-gray-900 title-font text-lg font-medium">Redlily</h2>
-              <p className="mt-1">₹599</p>
+              <p className="mt-1">₹599</p><p className="mt-1">S, M, L, XL, XXL</p>
             </div>
           </div>
           <div className="lg:w-1/5 md:w-1/2 p-4 w-full shadow-lg m-2">
@@ -133,7 +133,7 @@ const Kurtis = () => {
             <div className="mt-4 text-center md:text-left">
               <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">Kurtis</h3>
               <h2 className="text-gray-900 title-font text-lg font-medium">Redlily</h2>
-              <p className="mt-1">₹599</p>
+              <p className="mt-1">₹599</p><p className="mt-1">S, M, L, XL, XXL</p>
             </div>
           </div>
       </div>
