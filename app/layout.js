@@ -15,8 +15,8 @@ const geistMono = localFont({
 });
 
 export const metadata = {
-  title: "Techiewear.com- Techie Fashion",
-  description: "Techiewear.com- Ecommerce portal for techies to wear techie oriented clothes",
+  title: "Redlily - Ethnic Ladies Wear",
+  description: "Redlily.com- Ecommerce portal for ladies to choose from awesome indian ethnic quality clothing",
 };
 
 export default function RootLayout({ children }) {
