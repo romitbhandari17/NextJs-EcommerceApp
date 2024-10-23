@@ -14,6 +14,7 @@ export const CartProvider = ({ children }) => {
     try {
       if(localStorage.getItem("cart")){
         setCart(JSON.parse(localStorage.getItem("cart")));
+        setSubTotal(parseFloat(localStorage.getItem("subTotal")))
       }
     } catch (error) {
       console.error(error);
@@ -24,7 +25,7 @@ export const CartProvider = ({ children }) => {
 
   const saveCart = (newCart)=> {
     localStorage.setItem("cart" , JSON.stringify(newCart))
-
+    
     let subt=0;
     let keys = Object.keys(newCart);
     for(let i=0; i<keys.length; i++){
@@ -32,6 +33,7 @@ export const CartProvider = ({ children }) => {
     }
 
     setSubTotal(subt);
+    localStorage.setItem("subTotal" , subt)
   }
 
   const removeFromCart =(itemCode, qty, name, price, size, variant)=>{

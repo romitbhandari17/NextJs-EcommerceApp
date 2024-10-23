@@ -41,7 +41,7 @@ export default function Navbar() {
       <div ref={ref} className="w-72 md:w-96 z-20 absolute top-0 right-0 bg-red-200 p-10 transform transition-transform translate-x-full">
         <span onClick={toggleCart}><IoIosCloseCircle className='absolute top-4 right-2 text-2xl cursor-pointer text-red-700' /></span>
         <h2 className='font-bold text-xl'>Shopping Cart</h2>
-        <ol className='list-decimal font-semibold'>
+        <ol className='list-decimal font-normal'>
           {Object.keys(cart).length == 0 && <div className='my-2 text-sm text-red-600'> Your cart is empty!
           </div>}
           {Object.keys(cart).map((k) => {
@@ -56,11 +56,14 @@ export default function Navbar() {
             )
           })}
         </ol>
+        <div className="my-3 font-bold">
+          <span>Subtotal: ₹{subTotal}</span>
+        </div>
         <div className='flex'>
           <Link href={'/checkout'}>
             <button className="flex mx-auto mt-2 text-white bg-red-500 border-0 py-2 px-2 focus:outline-none hover:bg-red-600 rounded text-sm"><IoBagCheckOutline className='m-1' />Checkout</button>
           </Link>
-          <button onClick={() => { clearCart() }} className="flex mx-auto mt-2 text-white bg-red-500 border-0 py-2 px-2 focus:outline-none hover:bg-red-600 rounded text-sm">Clear Cart</button>
+          <button onClick={() => { clearCart() }} className="flex mx-2 mt-2 text-white bg-red-500 border-0 py-2 px-2 focus:outline-none hover:bg-red-600 rounded text-sm">Clear Cart</button>
         </div>
       </div>
     </div >
