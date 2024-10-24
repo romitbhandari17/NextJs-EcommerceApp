@@ -6,6 +6,7 @@ import { useRef } from 'react';
 import { FaCartShopping, FaCirclePlus, FaCircleMinus } from "react-icons/fa6";
 import { IoIosCloseCircle } from "react-icons/io";
 import { IoBagCheckOutline } from "react-icons/io5";
+import { RiAccountCircleFill } from "react-icons/ri";
 
 export default function Navbar() {
 
@@ -36,7 +37,9 @@ export default function Navbar() {
           <Link href={'/products/earrings'}><li>Earrings</li></Link>
         </ul>
       </div>
-      <div onClick={toggleCart} className="absolute right-4 my-6 mx-2 cursor-pointer"><FaCartShopping className="text-xl md:text-3xl" />
+      <div className="absolute right-4 my-6 mx-2 cursor-pointer flex">
+        <RiAccountCircleFill  className="text-xl md:text-3xl mx-3" />
+        <FaCartShopping onClick={toggleCart} className="text-xl md:text-3xl" />
       </div>
       <div ref={ref} className="w-72 md:w-96 z-20 absolute top-0 right-0 bg-red-200 p-10 transform transition-transform translate-x-full">
         <span onClick={toggleCart}><IoIosCloseCircle className='absolute top-4 right-2 text-2xl cursor-pointer text-red-700' /></span>
