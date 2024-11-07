@@ -1,6 +1,6 @@
 // app/api/products/add/route.js
 import { NextResponse } from 'next/server';
-import dbPromise from '@/lib/mongodb';
+import dbPromise from '@/app/lib/mongodb';
 
 export async function POST(request) {
   try {

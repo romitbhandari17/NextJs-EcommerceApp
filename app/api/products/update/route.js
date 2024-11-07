@@ -1,6 +1,6 @@
 // app/api/products/update/route.js
 import { NextResponse } from 'next/server';
-import dbPromise from '@/lib/mongodb';
+import dbPromise from '@/app/lib/mongodb';
 import { ObjectId } from 'mongodb';
 
 export async function PUT(request) {
