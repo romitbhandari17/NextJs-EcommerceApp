@@ -2,12 +2,90 @@
 import { useCart } from '@/app/context/CartContext';
 import React, { useEffect, useState } from 'react'
 
+// async function getProductData(slug) {
+//     try {
+//         let productResp = await fetch("http://localhost:3000/api/products/" + slug, {
+//             cache: 'no-store',  // Forces fresh data on every request (SSR)
+//         });
+//         let product = await productResp.json();
 
-export default function Product({ params }) {
+//         let varResponse = await fetch("http://localhost:3000/api/products?title=" + product.title, {
+//             cache: 'no-store',  // Forces fresh data on every request (SSR)
+//         });
+
+//         let variants = await varResponse.json();
+
+//         let colorSizeSlug = {}; // {color: {size: {slug: 'kurti red xl'}}}
+//         for (let item of variants) {
+//             if (Object.keys(colorSizeSlug).includes(item.color)) {
+//                 colorSizeSlug[item.color][item.size] = { slug: item.slug };
+//             }
+//             else {
+//                 colorSizeSlug[item.color] = {};
+//                 colorSizeSlug[item.color][item.size] = { slug: item.slug };
+//             }
+//         }
+//         setData({ variants: colorSizeSlug, product: product });
+
+//     } catch (error) {
+//         console.error('Error fetching variants', error);
+//         throw new Error("Could not fetch variants. Please try again later.");
+//     }
+
+
+//     //console.log(kurtiSets);
+//     return kurtiSets;
+// }
+
+
+function FetchProductData(slug) {
+    const [data, setData] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                let productResp = await fetch("http://localhost:3000/api/products/" + slug)
+                //
+                let product = await productResp.json();
+                console.log('prod in ui 1',product.data);
+
+                let varResponse = await fetch("http://localhost:3000/api/products?slug=" + slug,{
+                    cache: 'no-store',  // Forces fresh data on every request (SSR)
+                });
+                let variants = await varResponse.json();
+                console.log('prod in ui 2',variants.data);
+                let colorSizeSlug = {}; // {color: {size: {slug: 'kurti red xl'}}}
+                for (let item of variants.data) {
+                    if (Object.keys(colorSizeSlug).includes(item.color)) {
+                        colorSizeSlug[item.color][item.size] = { slug: item.slug };
+                    }
+                    else {
+                        colorSizeSlug[item.color] = {};
+                        colorSizeSlug[item.color][item.size] = { slug: item.slug };
+                    }
+                }
+                setData({ variants: colorSizeSlug, product: product.data ? product.data: {} });
+            } finally {
+                setLoading(false);
+            }
+
+        }
+        fetchData();
+    }, [slug]);
+
+    return { data, loading };
+}
+
+export default function ProductPage({ params }) {
     const { slug } = params;
     const [pin, setPin] = useState();
     const [service, setService] = useState();
     const { cart, subTotal, addToCart, removeFromCart, clearCart } = useCart();
+    const { data, loading } = FetchProductData(slug);
+    console.log('product color and size data', data);
+    //const [color, setColor] = useState(data.product.color);
+    //const [size, setSize] = useState(data.product.size);
 
     const onChangePin = (e) => {
         setPin(e.target.value);
@@ -20,9 +98,9 @@ export default function Product({ params }) {
             let apiData = await fetch("/api/pincode");
             let jsonData = await apiData.json();
             //console.log(jsonData, pin);
-            if(jsonData.includes(parseInt(pin))){
+            if (jsonData.includes(parseInt(pin))) {
                 setService(true)
-            }else{
+            } else {
                 setService(false);
             }
         } catch (error) {
@@ -30,6 +108,7 @@ export default function Product({ params }) {
         }
     }
 
+    if (loading) return <p>Loading...</p>;
 
     return (
         <>
@@ -81,15 +160,15 @@ export default function Product({ params }) {
                             <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
                                 <div className="flex">
                                     <span className="mr-3">Color</span>
-                                    <button className="border-2 border-gray-300 rounded-full w-6 h-6 focus:outline-none"></button>
-                                    <button className="border-2 border-gray-300 ml-1 bg-gray-700 rounded-full w-6 h-6 focus:outline-none"></button>
-                                    <button className="border-2 border-gray-300 ml-1 bg-red-500 rounded-full w-6 h-6 focus:outline-none"></button>
+                                    {Object.keys(data.variants).includes('yellow') && Object.keys(data.variants['yellow']).includes(data.product.size) && <button className="border-2 border-gray-300 bg-yellow-700 rounded-full w-6 h-6 focus:outline-none"></button>}
+                                    {Object.keys(data.variants).includes('blue') && Object.keys(data.variants['blue']).includes(data.product.size) && <button className="border-2 border-gray-300 ml-1 bg-blue-700 rounded-full w-6 h-6 focus:outline-none"></button>}
+                                    {Object.keys(data.variants).includes('red') && Object.keys(data.variants['red']).includes(data.product.size) && <button className="border-2 border-gray-300 ml-1 bg-red-500 rounded-full w-6 h-6 focus:outline-none"></button>}
                                 </div>
                                 <div className="flex ml-6 items-center">
                                     <span className="mr-3">Size</span>
                                     <div className="relative">
                                         <select className="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-red-200 focus:border-red-500 text-base pl-3 pr-10">
-                                            <option>SM</option>
+                                            <option>S</option>
                                             <option>M</option>
                                             <option>L</option>
                                             <option>XL</option>
@@ -104,7 +183,7 @@ export default function Product({ params }) {
                             </div>
                             <div className="flex">
                                 <span className="title-font font-medium text-2xl text-gray-900">₹599</span>
-                                <button onClick={()=>{addToCart(slug, 1, 499, 'Red Bandhej Ethinc Kurta Set with Pant', 'S', 'Blue')}} className="flex ml-3 text-white bg-red-500 border-0 py-2 px-2 md:px-6 focus:outline-none hover:bg-red-600 rounded">Add to Cart</button>
+                                <button onClick={() => { addToCart(slug, 1, 499, 'Red Bandhej Ethinc Kurta Set with Pant', 'S', 'Blue') }} className="flex ml-3 text-white bg-red-500 border-0 py-2 px-2 md:px-6 focus:outline-none hover:bg-red-600 rounded">Add to Cart</button>
                                 <button className="flex ml-3 text-white bg-red-500 border-0 py-2 px-2 md:px-6 focus:outline-none hover:bg-red-600 rounded">Buy Now</button>
                                 <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
                                     <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">

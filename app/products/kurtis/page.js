@@ -45,7 +45,7 @@ export default async function Kurtis({ params }) {
 
 async function getKurtisData() {
   try {
-    let productsResp = await fetch("http://localhost:3000/api/products", {
+    let productsResp = await fetch("http://localhost:3000/api/products?slug=all", {
       cache: 'no-store',  // Forces fresh data on every request (SSR)
     });
     let products = await productsResp.json();

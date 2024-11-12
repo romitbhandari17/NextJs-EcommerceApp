@@ -32,11 +32,25 @@ export async function getAllKurtis() {
 }
 
 
-export async function GET() {
+export async function GET(request) {
   try {
     const db = await dbPromise;
-    let products = await db.collection("products").find({}).toArray();
-
+    // Parse query parameters
+    const { searchParams } = new URL(request.url);
+    const slug = searchParams.get('slug');
+    let product = await db.collection("products").findOne({slug:slug});
+    let products=[];
+    if(product != null){
+      let title = product.title;
+      products = await db.collection("products").find({title}).toArray();
+    }else if( slug == 'all'){
+      products = await db.collection("products").find({}).toArray();
+    }
+    else{
+      console.log('No Product found')
+      return NextResponse.json({ success: true, data: 'No Product found' });
+    }
+    console.log('products exist=',products)
     return NextResponse.json({ success: true, data: products });
   } catch (error) {
     return NextResponse.json({ success: false, error: "Failed to fetch products" }, { status: 500 });
