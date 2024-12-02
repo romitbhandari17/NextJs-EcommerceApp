@@ -108,6 +108,13 @@ export default function ProductPage({ params }) {
         }
     }
 
+    const refreshVariant = (newsize, newcolor)=>{
+        console.log(data.variants, newsize, newcolor);
+        let url = `http://localhost:3000/product/${data.variants[newcolor][newsize]['slug']}`;
+
+        window.location = url;
+    }
+
     if (loading) return <p>Loading...</p>;
 
     return (
@@ -160,18 +167,18 @@ export default function ProductPage({ params }) {
                             <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
                                 <div className="flex">
                                     <span className="mr-3">Color</span>
-                                    {Object.keys(data.variants).includes('yellow') && Object.keys(data.variants['yellow']).includes(data.product.size) && <button className="border-2 border-gray-300 bg-yellow-700 rounded-full w-6 h-6 focus:outline-none"></button>}
-                                    {Object.keys(data.variants).includes('blue') && Object.keys(data.variants['blue']).includes(data.product.size) && <button className="border-2 border-gray-300 ml-1 bg-blue-700 rounded-full w-6 h-6 focus:outline-none"></button>}
-                                    {Object.keys(data.variants).includes('red') && Object.keys(data.variants['red']).includes(data.product.size) && <button className="border-2 border-gray-300 ml-1 bg-red-500 rounded-full w-6 h-6 focus:outline-none"></button>}
+                                    {Object.keys(data.variants).includes('yellow') && Object.keys(data.variants['yellow']).includes(data.product.size) && <button onClick={(e)=>{refreshVariant(data.product.size, 'yelllow')}} className={`border-2 bg-yellow-700 rounded-full w-6 h-6 focus:outline-none ${data.product.color==='yellow'? 'border-black': 'border-gray-300'}`}></button>}
+                                    {Object.keys(data.variants).includes('blue') && Object.keys(data.variants['blue']).includes(data.product.size) && <button onClick={(e)=>{refreshVariant(data.product.size, 'blue')}} className={`border-2 ml-1 bg-blue-700 rounded-full w-6 h-6 focus:outline-none ${data.product.color==='blue'? 'border-black': 'border-gray-300'}`}></button>}
+                                    {Object.keys(data.variants).includes('red') && Object.keys(data.variants['red']).includes(data.product.size) && <button onClick={(e)=>{refreshVariant(data.product.size, 'red')}} className={`border-2 ml-1 bg-red-700 rounded-full w-6 h-6 focus:outline-none ${data.product.color==='red'? 'border-black': 'border-gray-300'}`}></button>}
                                 </div>
                                 <div className="flex ml-6 items-center">
                                     <span className="mr-3">Size</span>
                                     <div className="relative">
-                                        <select className="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-red-200 focus:border-red-500 text-base pl-3 pr-10">
-                                            <option>S</option>
-                                            <option>M</option>
-                                            <option>L</option>
-                                            <option>XL</option>
+                                        <select value={data.product.size} onChange={(e)=>{refreshVariant(e.target.value, data.product.color)}} className="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-red-200 focus:border-red-500 text-base pl-3 pr-10">
+                                        {Object.keys(data.variants[data.product.color]).includes('S') && <option value='S'>S</option>}
+                                        {Object.keys(data.variants[data.product.color]).includes('M') && <option value='M'>M</option>}
+                                        {Object.keys(data.variants[data.product.color]).includes('L') && <option value='L'>L</option>}
+                                        {Object.keys(data.variants[data.product.color]).includes('XL') && <option value='XL'>XL</option>}
                                         </select>
                                         <span className="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
                                             <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4" viewBox="0 0 24 24">
