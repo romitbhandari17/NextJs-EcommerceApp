@@ -48,13 +48,13 @@ function FetchProductData(slug) {
                 let productResp = await fetch("http://localhost:3000/api/products/" + slug)
                 //
                 let product = await productResp.json();
-                console.log('prod in ui 1',product.data);
+                console.log('product=',product.data);
 
                 let varResponse = await fetch("http://localhost:3000/api/products?slug=" + slug,{
                     cache: 'no-store',  // Forces fresh data on every request (SSR)
                 });
                 let variants = await varResponse.json();
-                console.log('prod in ui 2',variants.data);
+                console.log('total variants=',variants.data);
                 let colorSizeSlug = {}; // {color: {size: {slug: 'kurti red xl'}}}
                 for (let item of variants.data) {
                     if (Object.keys(colorSizeSlug).includes(item.color)) {
