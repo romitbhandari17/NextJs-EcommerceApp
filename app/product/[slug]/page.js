@@ -110,8 +110,20 @@ export default function ProductPage({ params }) {
 
     const refreshVariant = (newsize, newcolor)=>{
         console.log(data.variants, newsize, newcolor);
-        let url = `http://localhost:3000/product/${data.variants[newcolor][newsize]['slug']}`;
-
+        let url="";
+        if(Object.keys(data.variants[newcolor]).includes(newsize)){
+            url = `http://localhost:3000/product/${data.variants[newcolor][newsize]['slug']}`;
+        }else{
+            if(Object.keys(data.variants[newcolor]).includes('S'))
+                url = `http://localhost:3000/product/${data.variants[newcolor]['S']['slug']}`;
+            else if(Object.keys(data.variants[newcolor]).includes('M'))
+                url = `http://localhost:3000/product/${data.variants[newcolor]['M']['slug']}`;
+            else if(Object.keys(data.variants[newcolor]).includes('L'))
+                url = `http://localhost:3000/product/${data.variants[newcolor]['L']['slug']}`;
+            else if(Object.keys(data.variants[newcolor]).includes('XL'))
+                url = `http://localhost:3000/product/${data.variants[newcolor]['XL']['slug']}`;
+        }
+        
         window.location = url;
     }
 
@@ -167,7 +179,7 @@ export default function ProductPage({ params }) {
                             <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
                                 <div className="flex">
                                     <span className="mr-3">Color</span>
-                                    {Object.keys(data.variants).includes('yellow') && Object.keys(data.variants['yellow']).includes(data.product.size) && <button onClick={(e)=>{refreshVariant(data.product.size, 'yelllow')}} className={`border-2 bg-yellow-700 rounded-full w-6 h-6 focus:outline-none ${data.product.color==='yellow'? 'border-black': 'border-gray-300'}`}></button>}
+                                    {Object.keys(data.variants).includes('yellow') && Object.keys(data.variants['yellow']).includes(data.product.size) && <button onClick={(e)=>{refreshVariant(data.product.size, 'yellow')}} className={`border-2 bg-yellow-700 rounded-full w-6 h-6 focus:outline-none ${data.product.color==='yellow'? 'border-black': 'border-gray-300'}`}></button>}
                                     {Object.keys(data.variants).includes('blue') && Object.keys(data.variants['blue']).includes(data.product.size) && <button onClick={(e)=>{refreshVariant(data.product.size, 'blue')}} className={`border-2 ml-1 bg-blue-700 rounded-full w-6 h-6 focus:outline-none ${data.product.color==='blue'? 'border-black': 'border-gray-300'}`}></button>}
                                     {Object.keys(data.variants).includes('red') && Object.keys(data.variants['red']).includes(data.product.size) && <button onClick={(e)=>{refreshVariant(data.product.size, 'red')}} className={`border-2 ml-1 bg-red-700 rounded-full w-6 h-6 focus:outline-none ${data.product.color==='red'? 'border-black': 'border-gray-300'}`}></button>}
                                 </div>
